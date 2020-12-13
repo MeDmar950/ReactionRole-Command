@@ -17,11 +17,11 @@ client.on('message', async(message) => {
   if(message.content.startsWith(prefix + 'rradd')) {
     let args = message.content.split(' ');
     let channel = message.mentions.channels.first();
-    if(!channel) return message.channel.send(`**${prefix}rradd \`<#Channel> <MessageID> <@&Role> <Emoji>\`**`);
+    if(!channel) return message.channel.send(`**${prefix}rradd \`<#Channel> <MessageID> <RoleID> <Emoji>\`**`);
     if(!message.guild.channels.cache.find((ch) => ch.id == channel.id)) return message.reply(`**invaild channel**`);
-    if(!args[2]) return message.channel.send(`**${prefix}rradd ${channel} \`<MessageID> <@&Role> <Emoji>\`**`);
+    if(!args[2]) return message.channel.send(`**${prefix}rradd ${channel} \`<MessageID> <RoleID> <Emoji>\`**`);
     let role = message.guild.roles.cache.find((ro) => ro.id === args[3]);
-    if(!role) return message.channel.send(`**${prefix}rradd <#${args[1]}> ${args[2]} \`<@&Role> <Emoji>\`**`);
+    if(!role) return message.channel.send(`**${prefix}rradd <#${args[1]}> ${args[2]} \`<RoleID> <Emoji>\`**`);
     if(!message.guild.roles.cache.find((ro) => ro.id == role.id)) return message.reply(`**invaild role**`);
     if(!args[4]) return message.channel.send(`**${prefix}rradd <#${args[1]}> ${args[2]} ${args[3]} \`<Emoji>\`**`);
    // if(!client.emojis.cache.get(args[4])) return;
